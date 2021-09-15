@@ -12,7 +12,7 @@ gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -52,6 +52,8 @@ group :development do
 end
 
 group :test do
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
+  gem 'shoulda-matchers', '~> 4.0'
   # Library for stubbing and setting expectations on HTTP requests in Ruby.
   gem 'webmock'
 end

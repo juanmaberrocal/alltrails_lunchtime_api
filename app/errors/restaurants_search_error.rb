@@ -1,0 +1,2 @@
+class RestaurantsSearchError < StandardError
+end
