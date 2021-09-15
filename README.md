@@ -88,3 +88,10 @@ The `query` string will allow you to filter the restaurant results. The `page_to
 ```
 "X-Next-Page-Token" => [REDACTED]
 ```
+
+## Postman
+This repo also has 2 Postman files for your convenience when running this project locally:
+1. `Localhost.postman_collection.json`
+2. `Localhost.postman_environment.json`
+
+You can import these into your Postman workspace and use the 2 endpoints to sign in and search for restaurants. The environment variables are already setup by default to point at your localhost on the port defined by `docker-compose`. The `sign_in` endpoint also has a "test" written which will automatically set your `access_token` variable that will be used in the header of the `search` request.
