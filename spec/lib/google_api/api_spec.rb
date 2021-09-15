@@ -14,10 +14,10 @@ RSpec.describe GoogleApi::Api do
     let(:fields) { 'field_1,field_2' }
     let(:input) { 'input-text' }
     let(:input_type) { 'input-type' }
-    let(:request_klass) { instance_double(MapsApi::FindPlace, perform: true) }
+    let(:request_klass) { instance_double(GoogleApi::MapsApi::FindPlace, perform: true) }
 
     before do
-      allow(MapsApi::FindPlace).to receive(:new)
+      allow(GoogleApi::MapsApi::FindPlace).to receive(:new)
         .with(api_key: api_key,
               fields: fields,
               input: input,
@@ -37,11 +37,11 @@ RSpec.describe GoogleApi::Api do
 
     let(:page_token) { 'page-token' }
     let(:query) { 'query-text' }
-    let(:request_klass) { instance_double(MapsApi::TextSearch, perform: true) }
+    let(:request_klass) { instance_double(GoogleApi::MapsApi::TextSearch, perform: true) }
     let(:type) { 'query-type' }
 
     before do
-      allow(MapsApi::TextSearch).to receive(:new)
+      allow(GoogleApi::MapsApi::TextSearch).to receive(:new)
         .with(api_key: api_key,
               page_token: page_token,
               query: query,
