@@ -7,6 +7,7 @@ module Api
       include ApiRescueFrom
 
       before_action :set_default_response_format
+      before_action :authenticate_and_set_user
 
       private
 

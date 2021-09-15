@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ApiResponse
+module ApiResponseHelper
   def response_headers
     response.headers
   end
@@ -15,5 +15,5 @@ module ApiResponse
 end
 
 RSpec.configure do |config|
-  config.include ApiResponse, type: :request
+  config.include ApiResponseHelper, type: :request
 end
