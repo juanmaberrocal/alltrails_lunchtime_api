@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "498dadd8-761a-422d-86b2-cacbd77a442f",
+		"name": "Localhost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alltrails - Lunch",
+			"item": [
+				{
+					"name": "Restaurant Search",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}:{{BASE_PORT}}/search?query=pizza",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"port": "{{BASE_PORT}}",
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "pizza"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Access-Token is returned\", function () {",
+									"    pm.response.to.have.header(\"Access-Token\");",
+									"",
+									"    const accessTokenHeader = pm.response.headers.find((h) => h.key === \"Access-Token\");",
+									"    pm.environment.set(\"ACCESS_TOKEN\", accessTokenHeader.value);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}:{{BASE_PORT}}/sign_in",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"port": "{{BASE_PORT}}",
+							"path": [
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
