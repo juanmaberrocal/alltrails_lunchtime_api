@@ -6,16 +6,8 @@ require 'google_api/api'
 
 RSpec.describe GoogleServices::RestaurantsSearch do
   # Constants
-  describe 'QUERY_TYPE' do
-    subject { described_class::QUERY_TYPE }
-    it { is_expected.to eq('restaurant') }
-  end
-
-  let(:service) { described_class.new(page_token: page_token, query: query) }
-  let(:page_token) { 'page-token' }
-  let(:query) { 'query' }
-
-  let(:google_api) { instance_double(GoogleApi::Api, text_search_request: text_search_api) }
+  let(:text_search_next_page_token) { 'next-page-token' }
+  let(:text_search_results) { [{ 'key' => 'value' }] }
   let(:text_search_api) do
     instance_double(
       GoogleApi::MapsApi::TextSearch,
@@ -23,12 +15,19 @@ RSpec.describe GoogleServices::RestaurantsSearch do
       next_page_token: text_search_next_page_token
     )
   end
-
-  let(:text_search_results) { [{ 'key' => 'value' }] }
-  let(:text_search_next_page_token) { 'next-page-token' }
+  let(:google_api) { instance_double(GoogleApi::Api, text_search_request: text_search_api) }
+  let(:query) { 'query' }
+  let(:page_token) { 'page-token' }
+  let(:service) { described_class.new(page_token: page_token, query: query) }
 
   before do
     allow(GoogleApi::Api).to receive(:new).and_return(google_api)
+  end
+
+  describe 'QUERY_TYPE' do
+    subject { described_class::QUERY_TYPE }
+
+    it { is_expected.to eq('restaurant') }
   end
 
   describe '#search' do

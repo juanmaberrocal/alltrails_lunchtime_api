@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'google_api/api'
 
 module GoogleServices

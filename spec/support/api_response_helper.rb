@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
 module ApiResponseHelper
-  def response_headers
-    response.headers
-  end
+  delegate :headers, to: :response, prefix: true
 
-  def response_body
-    response.body
-  end
+  delegate :body, to: :response, prefix: true
 
   def json_body
     JSON.parse(response_body)

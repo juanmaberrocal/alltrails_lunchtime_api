@@ -44,14 +44,14 @@ RSpec.describe 'Api::V1::Restaurants', type: :request do
       it 'returns restaurants search result as body' do
         subject
         expect(json_body).to match([
-          {
-            'formatted_address' => 'rest-formatted_address',
-            'geometry' => 'rest-geometry',
-            'name' => 'rest-name',
-            'photos' => 'rest-photos',
-            'place_id' => 'rest-place-id'
-          }
-        ])
+                                     {
+                                       'formatted_address' => 'rest-formatted_address',
+                                       'geometry' => 'rest-geometry',
+                                       'name' => 'rest-name',
+                                       'photos' => 'rest-photos',
+                                       'place_id' => 'rest-place-id'
+                                     }
+                                   ])
       end
 
       it 'returns restaurants search next page token in headers' do
@@ -73,8 +73,8 @@ RSpec.describe 'Api::V1::Restaurants', type: :request do
       it 'returns error json response' do
         subject
         expect(json_body).to eq(
-          "message"=>"Something went wrong.",
-          "status"=>"ERROR"
+          'message' => 'Something went wrong.',
+          'status' => 'ERROR'
         )
       end
     end
@@ -84,14 +84,14 @@ RSpec.describe 'Api::V1::Restaurants', type: :request do
 
       it 'returns http error' do
         subject
-        expect(response).to have_http_status(401)
+        expect(response).to have_http_status(:unauthorized)
       end
 
       it 'returns error json response' do
         subject
         expect(json_body).to eq(
-          "error"=>"Access token is missing in the request",
-          "status"=>"error"
+          'error' => 'Access token is missing in the request',
+          'status' => 'error'
         )
       end
     end
@@ -101,14 +101,14 @@ RSpec.describe 'Api::V1::Restaurants', type: :request do
 
       it 'returns http error' do
         subject
-        expect(response).to have_http_status(401)
+        expect(response).to have_http_status(:unauthorized)
       end
 
       it 'returns error json response' do
         subject
         expect(json_body).to eq(
-          "error"=>"Invalid access token",
-          "status"=>"error"
+          'error' => 'Invalid access token',
+          'status' => 'error'
         )
       end
     end
