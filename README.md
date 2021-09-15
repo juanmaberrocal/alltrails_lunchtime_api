@@ -33,7 +33,7 @@ $ docker-compose down
 ```
 
 **Important**
-If this is the first time running the application, you will need to open a new terminal window to setup the database:
+If this is the first time running the application, you will need to open a new terminal window **while you have your `docker-compose up` project running** to setup the database:
 ```
 $ docker-compose run api rails db:setup
 ```
@@ -49,7 +49,7 @@ For more details on running a Rails project in Docker, you can [read the officia
 ### Test Suite
 This project uses `RSpec` as a test suite. To run the test suite you will need to have your docker build running:
 ```
-$ docker-compose build
+$ docker-compose up
 ```
 
 And once again, open a new terminal window and run:
@@ -58,7 +58,7 @@ $ docker-compose run api bundle exec rspec
 ```
 
 ## Features
-This is a simple rails API with a 3 enpoints:
+This is a simple rails API with a 2 enpoints:
 ```
 POST /search
 POST /sign_in
