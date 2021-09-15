@@ -34,8 +34,7 @@ module GoogleServices
     attr_reader :page_token, :query
 
     def api_key
-      'AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk'
-      # Rails.env['GOOGLE_MAPS_API_KEY']
+      ENV['GOOGLE_MAPS_API_KEY']
     end
 
     def api
